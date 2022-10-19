@@ -1,7 +1,13 @@
 fun main(args: Array<String>) {
-    println("Hello World!")
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+    println("""
+        Hello, Welcome to the Shoppi !
+        If you want to shopping then plz tell me your name :)"
+    """.trimIndent())
+    val userName = readLine()
+    println("""
+        Thank you, $userName
+        Choice your category!
+        ***=======================***
+    """.trimIndent())
 }
