@@ -1,11 +1,14 @@
 package screen
 
+import ShoppingCategory
+
 class ShoppingHome {
 
     fun start() {
         showWelcomeMessage()
         showCategories()
     }
+
     private fun showWelcomeMessage() {
         println(
             """
@@ -22,24 +25,9 @@ class ShoppingHome {
         """.trimIndent()
         )
     }
+
     private fun showCategories() {
-        val categories = arrayOf("패션", "전자기기", "반려동물용품")
-        for (category in categories) {
-            println(category)
-        }
-
-        println("=> 장바구니로 이동하시려면 #을 입력해주세요")
-
-        var selectedCategory = readLine()
-        while (selectedCategory.isNullOrBlank()) {
-            println("값을 입력해주세요.")
-            selectedCategory = readLine()
-        }
-        if (selectedCategory == "#") {
-
-        } else {
-
-        }
+        val shoppingCategory = ShoppingCategory()
+        shoppingCategory.showCategories()
     }
-
 }
