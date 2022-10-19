@@ -1,3 +1,5 @@
+package screen
+
 class ShoppingCategory {
     fun showCategories() {
         val categories = arrayOf("Fashion", "Electronics", "Fat Products")
@@ -16,7 +18,8 @@ class ShoppingCategory {
 
         } else {
             if (categories.contains(selectedCategory)) {
-                // 상품 목록 표출
+                val shoppingProductList = ShoppingProductList()
+                shoppingProductList.showProducts(selectedCategory)
             } else {
                 showErrorMessage(selectedCategory)
             }
@@ -26,4 +29,5 @@ class ShoppingCategory {
     private fun showErrorMessage(selectedCategory: String?) {
         println("[${selectedCategory}] : Not Exist Category, plz Again")
     }
+
 }

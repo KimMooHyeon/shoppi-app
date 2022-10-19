@@ -1,7 +1,5 @@
 package screen
 
-import ShoppingCategory
-
 class ShoppingHome {
 
     fun start() {
