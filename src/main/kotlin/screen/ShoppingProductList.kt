@@ -1,5 +1,6 @@
 package screen
 
+import data.CartItems
 import data.Product
 
 class ShoppingProductList {
@@ -29,8 +30,9 @@ class ShoppingProductList {
             """.trimIndent()
             )
             categoryProducts.forEachIndexed { index, product ->
-                println("${index + 1} $product")
+                println("$index $product")
             }
+            showCartOption(categoryProducts,selectedCategory)
         } else {
             showEmptyProductMessage(selectedCategory)
         }
@@ -38,5 +40,24 @@ class ShoppingProductList {
 
     private fun showEmptyProductMessage(selectedCategory: String) {
         println("[${selectedCategory}] is Empty List")
+    }
+
+    private fun showCartOption(categoryProduct: List<Product>,selectedCategory:String){
+        println("""
+            ***=======================***
+            Choice Number Your Product Number
+        """.trimIndent())
+        val selectedIndex = readLine()?.toIntOrNull()!!
+        categoryProduct.getOrNull(selectedIndex)?.let { product ->
+            CartItems.addProduct(product)
+            println("=> Want to Go Cart then Press # , or Continue Press *")
+            val answer = readLine()
+            if (answer == "#"){
+                val shoppingCart = ShoppingCart()
+                shoppingCart.showCartItem()
+            }else if(answer =="*"){
+                showProducts(selectedCategory)
+            }
+        }
     }
 }
