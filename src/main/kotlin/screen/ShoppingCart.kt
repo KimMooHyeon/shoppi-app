@@ -3,9 +3,10 @@ package screen
 import LINE_DIVIDER
 import data.CartItems
 
-class ShoppingCart {
+class ShoppingCart : Screen() {
     private val products = CartItems.products
     fun showCartItem() {
+        ScreenStack.push(this)
         if (products.isNotEmpty()) {
             println(products.keys.joinToString(
                 ". \n",
@@ -18,10 +19,12 @@ class ShoppingCart {
                 "category : ${product.categoryLabel} / name : ${product.name} / amount : ${products[product]}"
             }
             )
-        }else{
-            println("""
+        } else {
+            println(
+                """
                 Empty Cart
-            """.trimIndent())
+            """.trimIndent()
+            )
         }
     }
 }

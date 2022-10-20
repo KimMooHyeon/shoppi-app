@@ -6,7 +6,7 @@ import data.Product
 import extensions.getNotEmptyInt
 import extensions.getNotEmptyString
 
-class ShoppingProductList {
+class ShoppingProductList : Screen() {
     private val products = arrayOf(
         Product("Fashion", "Winter Clothes"),
         Product("Fashion", "Winter Pants"),
@@ -23,6 +23,7 @@ class ShoppingProductList {
     }
 
     fun showProducts(selectedCategory: String) {
+        ScreenStack.push(this)
         val categoryProducts = categories[selectedCategory]
         if (!categoryProducts.isNullOrEmpty()) {
             println(
@@ -35,7 +36,7 @@ class ShoppingProductList {
             categoryProducts.forEachIndexed { index, product ->
                 println("$index $product")
             }
-            showCartOption(categoryProducts,selectedCategory)
+            showCartOption(categoryProducts, selectedCategory)
         } else {
             showEmptyProductMessage(selectedCategory)
         }
@@ -45,20 +46,22 @@ class ShoppingProductList {
         println("[${selectedCategory}] is Empty List")
     }
 
-    private fun showCartOption(categoryProduct: List<Product>,selectedCategory:String){
-        println("""
+    private fun showCartOption(categoryProduct: List<Product>, selectedCategory: String) {
+        println(
+            """
             $LINE_DIVIDER
             Choice Number Your Product Number
-        """.trimIndent())
+        """.trimIndent()
+        )
         val selectedIndex = readLine().getNotEmptyInt()
         categoryProduct.getOrNull(selectedIndex)?.let { product ->
             CartItems.addProduct(product)
             println("=> Want to Go Cart then Press # , or Continue Press *")
             val answer = readLine().getNotEmptyString()
-            if (answer == "#"){
+            if (answer == "#") {
                 val shoppingCart = ShoppingCart()
                 shoppingCart.showCartItem()
-            }else if(answer =="*"){
+            } else if (answer == "*") {
                 showProducts(selectedCategory)
             }
         }
