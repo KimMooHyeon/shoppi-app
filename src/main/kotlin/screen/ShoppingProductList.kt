@@ -6,7 +6,7 @@ import data.Product
 import extensions.getNotEmptyInt
 import extensions.getNotEmptyString
 
-class ShoppingProductList : Screen() {
+class ShoppingProductList(private val selectedCategory: String) : Screen() {
     private val products = arrayOf(
         Product("Fashion", "Winter Clothes"),
         Product("Fashion", "Winter Pants"),
@@ -22,7 +22,7 @@ class ShoppingProductList : Screen() {
         product.categoryLabel
     }
 
-    fun showProducts(selectedCategory: String) {
+    fun showProducts() {
         ScreenStack.push(this)
         val categoryProducts = categories[selectedCategory]
         if (!categoryProducts.isNullOrEmpty()) {
@@ -36,17 +36,17 @@ class ShoppingProductList : Screen() {
             categoryProducts.forEachIndexed { index, product ->
                 println("$index $product")
             }
-            showCartOption(categoryProducts, selectedCategory)
+            showCartOption(categoryProducts)
         } else {
-            showEmptyProductMessage(selectedCategory)
+            showEmptyProductMessage()
         }
     }
 
-    private fun showEmptyProductMessage(selectedCategory: String) {
+    private fun showEmptyProductMessage() {
         println("[${selectedCategory}] is Empty List")
     }
 
-    private fun showCartOption(categoryProduct: List<Product>, selectedCategory: String) {
+    private fun showCartOption(categoryProduct: List<Product>) {
         println(
             """
             $LINE_DIVIDER
@@ -62,8 +62,11 @@ class ShoppingProductList : Screen() {
                 val shoppingCart = ShoppingCart()
                 shoppingCart.showCartItem()
             } else if (answer == "*") {
-                showProducts(selectedCategory)
+                showProducts()
             }
+        } ?: kotlin.run {
+            println("${selectedIndex} is not Exist Index, Press Again")
+            showProducts()
         }
     }
 }

@@ -1,5 +1,6 @@
 package screen
 
+sealed class Screen
 object ScreenStack {
     private val screenStack = mutableListOf<Screen>()
     fun push(screen: Screen) {
@@ -15,5 +16,4 @@ object ScreenStack {
 
 }
 
-sealed class Screen
 
