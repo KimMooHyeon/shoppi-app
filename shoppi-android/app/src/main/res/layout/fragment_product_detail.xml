@@ -13,7 +13,7 @@
             android:id="@+id/toolbar_product_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll||enterAlways"
+            app:layout_scrollFlags="scroll"
             app:navigationIcon="@drawable/ic_gnb_back" />
 
     </com.google.android.material.appbar.AppBarLayout>
