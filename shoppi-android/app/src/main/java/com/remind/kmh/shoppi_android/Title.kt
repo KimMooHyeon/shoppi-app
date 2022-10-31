@@ -1,6 +1,8 @@
 package com.remind.kmh.shoppi_android
 
+import com.google.gson.annotations.SerializedName
+
 data class Title(
-    val icon_url: String,
+    @SerializedName("icon_url") val iconUrl: String,
     val text: String
 )

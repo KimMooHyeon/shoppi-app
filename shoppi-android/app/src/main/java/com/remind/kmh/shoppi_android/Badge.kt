@@ -1,6 +1,8 @@
 package com.remind.kmh.shoppi_android
 
+import com.google.gson.annotations.SerializedName
+
 data class Badge(
-    val background_color: String,
+    @SerializedName("background_color") val backgroundColor: String,
     val label: String
 )

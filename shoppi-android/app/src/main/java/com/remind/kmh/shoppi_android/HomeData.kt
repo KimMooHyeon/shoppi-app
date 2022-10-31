@@ -1,6 +1,10 @@
 package com.remind.kmh.shoppi_android
 
+import Banner
+import com.google.gson.annotations.SerializedName
+
+
 data class HomeData(
     val title: Title,
-    val top_banners: List<TopBanner>
+    @SerializedName("top_banners") val topBanners: List<Banner>
 )
