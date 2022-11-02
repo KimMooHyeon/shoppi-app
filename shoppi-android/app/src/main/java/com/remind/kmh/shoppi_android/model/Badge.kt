@@ -1,4 +1,4 @@
-package com.remind.kmh.shoppi_android
+package com.remind.kmh.shoppi_android.model
 
 import com.google.gson.annotations.SerializedName
 
