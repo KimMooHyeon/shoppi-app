@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.remind.kmh.shoppi_android.databinding.ItemCategoryBinding
 import com.remind.kmh.shoppi_android.model.Category
 
-class CategoryAdapter :
+class CategoryAdapter(private val viewModel: CategoryViewModel) :
     ListAdapter<Category, CategoryAdapter.CategoryViewHolder>(CategoryDiffCallback()) {
-    class CategoryViewHolder(private val binding: ItemCategoryBinding) :
+    inner class CategoryViewHolder(private val binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(category: Category) {
+            binding.viewModel = viewModel
             binding.category = category
             binding.executePendingBindings()
         }

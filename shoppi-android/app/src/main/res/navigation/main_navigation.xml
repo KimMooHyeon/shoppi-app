@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
     app:startDestination="@id/navigation_home">
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.remind.kmh.shoppi_android.ui.home.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_home_to_productDetail"
             app:destination="@id/navigation_productDetail" />
@@ -14,13 +16,25 @@
     <fragment
         android:id="@+id/navigation_category"
         android:name="com.remind.kmh.shoppi_android.ui.category.CategoryFragment"
-        android:label="CategoryFragment" />
+        android:label="CategoryFragment"
+        tools:layout="@layout/fragment_category">
+        <action
+            android:id="@+id/action_category_to_category_detail"
+            app:destination="@id/navigation_categoryDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_cart"
         android:name="com.remind.kmh.shoppi_android.ui.CartFragment"
-        android:label="CartFragment" />
+        android:label="CartFragment"
+        tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/navigation_productDetail"
         android:name="com.remind.kmh.shoppi_android.ui.ProductDetailFragment"
-        android:label="ProductDetailFragment" />
+        android:label="ProductDetailFragment"
+        tools:layout="@layout/fragment_product_detail" />
+    <fragment
+        android:id="@+id/navigation_categoryDetailFragment"
+        android:name="com.remind.kmh.shoppi_android.ui.categorydetail.CategoryDetailFragment"
+        android:label="CategoryDetailFragment"
+        tools:layout="@layout/fragment_category_detail" />
 </navigation>

@@ -6,7 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.remind.kmh.shoppi_android.model.Categories
+import com.remind.kmh.shoppi_android.model.Category
 import com.remind.kmh.shoppi_android.repository.CategoryRepository
+import com.remind.kmh.shoppi_android.ui.common.Event
 import kotlinx.coroutines.launch
 
 class CategoryViewModel(private val categoryRepository: CategoryRepository) : ViewModel() {
@@ -14,15 +16,27 @@ class CategoryViewModel(private val categoryRepository: CategoryRepository) : Vi
     private val _items = MutableLiveData<Categories>()
     val items: LiveData<Categories> = _items
 
+    private val _openCategoryEvent = MutableLiveData<Event<Category>>()
+    val openCategoryEvent: LiveData<Event<Category>> = _openCategoryEvent
+
+    private val _test = MutableLiveData<Boolean>()
+    val test: LiveData<Boolean> = _test
+
     init {
-        Log.d("CategoryFragment","start")
+        Log.d("CategoryFragment", "start")
         loadCategory()
+    }
+    fun userClicksOnButton() {
+        _test.value = true
+    }
+    fun openCategoryDetail(category: Category) {
+        _openCategoryEvent.value = Event(category)
     }
 
     private fun loadCategory() {
         viewModelScope.launch {
             val categories = categoryRepository.getCategories()
-            Log.d("CategoryFragment",categories.toString())
+            Log.d("CategoryFragment", categories.toString())
             _items.value = categories
         }
     }
