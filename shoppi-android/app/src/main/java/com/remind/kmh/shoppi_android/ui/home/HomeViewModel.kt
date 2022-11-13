@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.remind.kmh.shoppi_android.model.Banner
 import com.remind.kmh.shoppi_android.model.Promotion
 import com.remind.kmh.shoppi_android.model.Title
-import com.remind.kmh.shoppi_android.repository.HomeRepository
+import com.remind.kmh.shoppi_android.repository.home.HomeRepository
 import com.remind.kmh.shoppi_android.ui.common.Event
 
 class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {

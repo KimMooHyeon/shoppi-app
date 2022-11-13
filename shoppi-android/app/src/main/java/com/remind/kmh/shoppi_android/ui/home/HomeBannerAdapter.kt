@@ -1,22 +1,13 @@
 package com.remind.kmh.shoppi_android.ui.home
 
-
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.remind.kmh.shoppi_android.model.Banner
-import com.remind.kmh.shoppi_android.GlideApp
-import com.remind.kmh.shoppi_android.R
 import com.remind.kmh.shoppi_android.databinding.ItemHomeBannerBinding
-import java.text.DecimalFormat
-import kotlin.math.roundToInt
+
 class HomeBannerAdapter(private val viewModel: HomeViewModel) : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(
     BannerDiffCallback()
 ) {

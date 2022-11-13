@@ -5,12 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.remind.kmh.shoppi_android.model.Product
+import com.remind.kmh.shoppi_android.repository.cart.CartRepository
 import com.remind.kmh.shoppi_android.repository.productdetail.ProductDetailRepository
 import com.remind.kmh.shoppi_android.ui.common.Event
 import kotlinx.coroutines.launch
 
 class ProductDetailViewModel(
     private val productDetailRepository: ProductDetailRepository,
+    private val cartRepository: CartRepository
 
 ) : ViewModel() {
 
@@ -28,8 +30,8 @@ class ProductDetailViewModel(
 
     fun addCart(product: Product) {
         viewModelScope.launch {
-        //    cartRepository.addCartItem(product)
-          //  _addCartEvent.value = Event(Unit)
+            cartRepository.addCartItem(product)
+            _addCartEvent.value = Event(Unit)
         }
     }
 }

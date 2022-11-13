@@ -1,4 +1,4 @@
-package com.remind.kmh.shoppi_android
+package com.remind.kmh.shoppi_android.ui.common
 
 import android.content.Context
 

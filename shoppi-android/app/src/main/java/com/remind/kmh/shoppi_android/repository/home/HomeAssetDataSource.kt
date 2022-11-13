@@ -1,7 +1,7 @@
-package com.remind.kmh.shoppi_android.repository
+package com.remind.kmh.shoppi_android.repository.home
 
 import com.google.gson.Gson
-import com.remind.kmh.shoppi_android.AssetLoader
+import com.remind.kmh.shoppi_android.ui.common.AssetLoader
 import com.remind.kmh.shoppi_android.model.HomeData
 
 class HomeAssetDataSource(private val assetLoader: AssetLoader) : HomeDataSource {
