@@ -19,16 +19,11 @@ class CategoryViewModel(private val categoryRepository: CategoryRepository) : Vi
     private val _openCategoryEvent = MutableLiveData<Event<Category>>()
     val openCategoryEvent: LiveData<Event<Category>> = _openCategoryEvent
 
-    private val _test = MutableLiveData<Boolean>()
-    val test: LiveData<Boolean> = _test
 
     init {
-        Log.d("CategoryFragment", "start")
         loadCategory()
     }
-    fun userClicksOnButton() {
-        _test.value = true
-    }
+
     fun openCategoryDetail(category: Category) {
         _openCategoryEvent.value = Event(category)
     }

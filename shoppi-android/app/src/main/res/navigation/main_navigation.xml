@@ -10,7 +10,7 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_home_to_productDetail"
+            android:id="@+id/action_home_to_product_detail"
             app:destination="@id/navigation_productDetail" />
     </fragment>
     <fragment
@@ -29,12 +29,16 @@
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/navigation_productDetail"
-        android:name="com.remind.kmh.shoppi_android.ui.ProductDetailFragment"
+        android:name="com.remind.kmh.shoppi_android.ui.productdetail.ProductDetailFragment"
         android:label="ProductDetailFragment"
         tools:layout="@layout/fragment_product_detail" />
     <fragment
         android:id="@+id/navigation_categoryDetailFragment"
         android:name="com.remind.kmh.shoppi_android.ui.categorydetail.CategoryDetailFragment"
         android:label="CategoryDetailFragment"
-        tools:layout="@layout/fragment_category_detail" />
+        tools:layout="@layout/fragment_category_detail" >
+        <action
+            android:id="@+id/action_category_detail_to_product_detail"
+            app:destination="@id/navigation_productDetail" />
+    </fragment>
 </navigation>

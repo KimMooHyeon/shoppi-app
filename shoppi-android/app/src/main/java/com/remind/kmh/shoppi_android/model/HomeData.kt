@@ -7,5 +7,6 @@ import com.remind.kmh.shoppi_android.model.Title
 
 data class HomeData(
     val title: Title,
-    @SerializedName("top_banners") val topBanners: List<Banner>
+    @SerializedName("top_banners") val topBanners: List<Banner>,
+    val promotions: Promotion
 )

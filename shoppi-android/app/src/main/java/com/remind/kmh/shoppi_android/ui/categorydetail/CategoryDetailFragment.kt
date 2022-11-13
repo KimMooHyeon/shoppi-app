@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
+import com.remind.kmh.shoppi_android.R
 import com.remind.kmh.shoppi_android.common.KEY_CATEGORY_LABEL
+import com.remind.kmh.shoppi_android.common.KEY_PRODUCT_ID
 import com.remind.kmh.shoppi_android.databinding.FragmentCategoryDetailBinding
 import com.remind.kmh.shoppi_android.ui.common.ProductClickListener
 import com.remind.kmh.shoppi_android.ui.common.ProductPromotionAdapter
@@ -35,18 +39,26 @@ class CategoryDetailFragment: Fragment(), ProductClickListener {
         binding.lifecycleOwner = viewLifecycleOwner
         setToolbar()
         setListAdapter()
+        setNavigation()
     }
 
-    // ProductClickListener
     override fun onProductClick(productId: String) {
-        // TODO 화면 이동 구현
+        findNavController().navigate(
+            R.id.action_category_detail_to_product_detail, bundleOf(
+            KEY_PRODUCT_ID to "desk-1"
+        )
+        )
     }
 
     private fun setToolbar() {
         val categoryLabel = requireArguments().getString(KEY_CATEGORY_LABEL)
         binding.toolbarCategoryDetail.title = categoryLabel
     }
-
+    private fun setNavigation() {
+        binding.toolbarCategoryDetail.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
     private fun setListAdapter() {
         val topSellingSectionAdapter = CategoryTopSellingSectionAdapter()
         val titleAdapter = SectionTitleAdapter()

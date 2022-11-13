@@ -17,15 +17,13 @@ import com.remind.kmh.shoppi_android.R
 import com.remind.kmh.shoppi_android.databinding.ItemHomeBannerBinding
 import java.text.DecimalFormat
 import kotlin.math.roundToInt
-
-class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(
+class HomeBannerAdapter(private val viewModel: HomeViewModel) : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(
     BannerDiffCallback()
 ) {
+    private lateinit var binding: ItemHomeBannerBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeBannerViewHolder {
-        val binding =
-            ItemHomeBannerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
+        binding = ItemHomeBannerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HomeBannerViewHolder(binding)
     }
 
@@ -33,10 +31,11 @@ class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHo
         holder.bind(getItem(position))
     }
 
-    class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(banner: Banner) {
             binding.banner = banner
+            binding.viewModel = viewModel
             binding.executePendingBindings()
         }
     }
