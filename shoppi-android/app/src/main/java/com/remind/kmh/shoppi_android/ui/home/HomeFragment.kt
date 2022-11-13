@@ -71,6 +71,7 @@ class HomeFragment : Fragment(), ProductClickListener {
                     submitList(banners)
                 }
             }
+            requireContext()
             val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
             val pageMargin = resources.getDimension(R.dimen.viewpager_item_margin)
             val screenWidth = resources.displayMetrics.widthPixels

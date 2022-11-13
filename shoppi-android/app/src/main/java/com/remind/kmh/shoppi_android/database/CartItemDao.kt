@@ -10,8 +10,8 @@ import com.remind.kmh.shoppi_android.model.CartItem
 interface CartItemDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-     fun insert(cartItem: CartItem)
+    suspend fun insert(cartItem: CartItem)
 
     @Query("SELECT * FROM cart_item")
-     fun load(): List<CartItem>
+    suspend fun load(): List<CartItem>
 }
